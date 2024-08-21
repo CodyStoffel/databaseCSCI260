@@ -1,0 +1,2 @@
+All:
+	python Simple.py
