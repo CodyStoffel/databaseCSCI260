@@ -12,9 +12,9 @@ with open('julydata.txt', newline='') as csvfile:
             time=row[2]
             flow=int(row[4])
             total=total + flow
-            toatlsq += flow*flow
+            toatlsq = flow*flow  #wrote += first 
             count+=1
 #           print(time,', ',flow)
     mean=(total/count)
-    variance=sqrt(toatlsq/count-mean*mean)
+    variance = sqrt(toatlsq/count-mean*mean)
     print(count, ' ',mean,' ',variance)
