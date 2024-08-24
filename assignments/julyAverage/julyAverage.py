@@ -9,12 +9,14 @@ with open('julydata.txt', newline='') as csvfile:
     count = 0
     for row in flowreader:
         if "USGS" in row :
-            time=row[2]
-            flow=int(row[4])
-            total=total + flow
-            toatlsq = flow*flow  #wrote += first 
-            count+=1
-#           print(time,', ',flow)
+            time = row[2]
+            flow = int(row[4])
+            total = total + flow
+            count += 1
+#    
     mean=(total/count)
-    variance = sqrt(toatlsq/count-mean*mean)
-    print(count, ' ',mean,' ',variance)
+    
+    print(f"The average cubic feet of flow in the Colorado River near the Utah border for July is: {mean}")
+
+
+          
