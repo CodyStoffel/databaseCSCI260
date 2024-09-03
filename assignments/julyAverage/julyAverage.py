@@ -16,7 +16,7 @@ with open('julydata.txt', newline='') as csvfile:
 #    
     mean=(total/count)
     
-    print(f"The average cubic feet of flow in the Colorado River near the Utah border for July is: {mean}")
+    print(f"The average cubic feet of flow in the Colorado River near the Utah border for July is:\n {mean}")
 
 
           
