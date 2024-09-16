@@ -18,5 +18,3 @@ with open('julydata.txt', newline='') as csvfile:
     
     print(f"The average cubic feet of flow in the Colorado River near the Utah border for July is:\n {mean}")
 
-
-          
