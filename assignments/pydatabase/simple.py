@@ -10,7 +10,7 @@ print("3) Update a course")
 print("4) Delete a course")
 print("Any other number to quit")
 
-choice = input("Enter 1,2,3 or 4")
+choice = input("Enter 1,2,3 or 4: ")
 
 if choice =="1":
     Add()
