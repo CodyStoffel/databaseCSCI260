@@ -1,4 +1,4 @@
-import psycopg2
+from db import *
 from addCourses import Add
 from delCourses import Delete
 from showCourses import Show

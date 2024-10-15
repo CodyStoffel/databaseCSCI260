@@ -6,14 +6,11 @@
 # python3
 
 import psycopg2
+from db import *
 
 def Update():
-    conn = psycopg2.connect(database="csci260",
-                            host="localhost",
-                            user="csci260",
-                            password="password")
-
-    cursor = conn.cursor()
+    global cursor
+    connectDB()
 
     print("Updating a class number in the offered classes")
     classDept=input("Please enter the class Department:")
@@ -25,8 +22,7 @@ def Update():
     print(query)
     cursor.execute(query)
     conn.commit()
-    cursor.close()
-    conn.close()
+    disconnectDB()
 
 if __name__ == "__main__":
     Update()

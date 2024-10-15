@@ -6,14 +6,10 @@
 # python3
 
 import psycopg2
+from db import *
 
 def Delete():
-    conn = psycopg2.connect(database="csci260",
-                            host="localhost",
-                            user="csci260",
-                            password="password")
-
-    cursor = conn.cursor()
+    cursor = connectDB()
 
     print("Deleting a class from the offered classes")
     classDept=input("Please enter the class Department:")
@@ -24,8 +20,7 @@ def Delete():
     print(query)
     cursor.execute(query)
     conn.commit()
-    cursor.close()
-    conn.close()
+    disconnectDB()
 
 if __name__ == "__main__":
     Delete()

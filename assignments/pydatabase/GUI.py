@@ -2,10 +2,20 @@ from tkinter import *
 from showCourses import ShowStr
 from addCourses import addCourse
 
-def addCourse():
-    global root
+
+
+
+def addCourseClick(win, textCourse, textNumber):
+    dept = textCourse.get("1.0", "end-1c")
+    number = textNumber.get("1.0", "end-1c")
+    addCourse(dept, number)
+    win.destroy()
+
+def addCourseWindow(root):
+    global win
     #grab_set()
-    print("got here")
+    #print("got here")
+    
     
 
     win = Toplevel(root)
@@ -26,11 +36,18 @@ def addCourse():
     labelNumber.pack()
     textNumber = Text(rightframe, height=1, width=30)
     textNumber.pack()
-    add = Button(rightframe, text = "Add the Course")
+    add = Button(rightframe, command = lambda: addCourseClick(win, textCourse, textNumber), text = "Add the Course")
     add.pack(padx = 3, pady = 3)
     cancel = Button(leftframe, command = win.destroy, text = "Cancel")
     cancel.pack(padx = 3, pady = 3)
     #grab_release()
+
+def updateCourseList(event, text):
+    if event.widget == root:
+        print("Main window Focus")
+        text.delete('1.0', END)
+        text.insert(END, ShowStr())
+    pass
 
 root = Tk()
 #root.geometry("200x150")
@@ -46,7 +63,7 @@ rightframe.pack(side=RIGHT)
 label = Label(frame, text = "Courses Currently Scheduled")
 label.pack()
 
-add = Button(leftframe, command=addCourse, text = "Add a Course")
+add = Button(leftframe, command=lambda: addCourseWindow(root), text = "Add a Course")
 add.pack(padx = 3, pady = 3)
 remove = Button(leftframe, text = "Remove a Course")
 remove.pack(padx = 3, pady = 3)
@@ -55,7 +72,8 @@ update.pack(padx = 3, pady = 3)
 
 text = Text(rightframe, height=20, width=30)
 text.pack()
-text.insert(END, ShowStr())
+
 
 root.title("Test")
+root.bind("<FocusIn>", lambda event: updateCourseList(event, text))
 root.mainloop()
