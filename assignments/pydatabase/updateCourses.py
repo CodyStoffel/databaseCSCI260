@@ -9,8 +9,7 @@ import psycopg2
 from db import *
 
 def Update():
-    global cursor
-    connectDB()
+    cursor = connectDB()
 
     print("Updating a class number in the offered classes")
     classDept=input("Please enter the class Department:")
@@ -21,7 +20,6 @@ def Update():
     query="update courses set number='%s' where class='%s' and number='%s'" %(classNewNum,classDept,classNum)
     print(query)
     cursor.execute(query)
-    conn.commit()
     disconnectDB()
 
 if __name__ == "__main__":

@@ -17,6 +17,7 @@ def connectDB():
 def disconnectDB():
     global conn
     global cursor
+    conn.commit()
     cursor.close()
     conn.close()
     conn=None

@@ -5,22 +5,22 @@
 # psycopg2 +
 # python3
 
-import psycopg2
 from db import *
 
-def Delete():
+def deleteCourse(classDept, classNum):
     cursor = connectDB()
-
-    print("Deleting a class from the offered classes")
-    classDept=input("Please enter the class Department:")
-    classNum=input("Please enter the class Number:")
-
-    #Use Fstring Formatted String to add class and number to query
     query="delete from courses where class='%s' and number='%s'" %(classDept,classNum)
     print(query)
     cursor.execute(query)
-    conn.commit()
     disconnectDB()
+
+def Delete():
+    print("Deleting a class from the offered classes")
+    classDept=input("Please enter the class Department:")
+    classNum=input("Please enter the class Number:")
+    deleteCourse(classDept, classNum)
+
+    #Use Fstring Formatted String to add class and number to query
 
 if __name__ == "__main__":
     Delete()

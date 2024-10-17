@@ -5,12 +5,10 @@
 # psycopg2 +
 # python3
 
-import psycopg2
 from db import *
 
 def ShowStr(ascii=True):
-    global cursor
-    connectDB()
+    cursor = connectDB()
 
     cursor.execute("SELECT * FROM courses")
 

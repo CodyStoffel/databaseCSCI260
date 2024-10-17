@@ -14,7 +14,6 @@ def addCourse(dept,number):
     query="insert into courses (class,number) values ('%s','%s');" %(dept,number)
     print(query)
     cursor.execute(query)
-    conn.commit()
     disconnectDB()
 
 def Add():
