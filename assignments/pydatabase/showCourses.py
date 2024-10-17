@@ -8,7 +8,7 @@
 import psycopg2
 from db import *
 
-def ShowStr():
+def ShowStr(ascii=True):
     global cursor
     connectDB()
 
@@ -19,7 +19,10 @@ def ShowStr():
     #print(data)
     returnValue=''
     for row in data:
-        returnValue=returnValue+"%s|%s|%s\n"%(row[0],row[1],row[2])
+        if (ascii):
+            returnValue=returnValue+"%s|%s|%s\n"%(row[0],row[1],row[2])
+        else:
+            returnValue=returnValue+"<tr><td>%s</td><td>%s</td><td>%s</td></tr>"%(row[0],row[1],row[2])
     disconnectDB()
     return returnValue
 
