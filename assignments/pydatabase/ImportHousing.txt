@@ -1,0 +1,9 @@
+create table housing (id serial,price int,area int,bedrooms int,
+    bathrooms int,stories int,mainroad text,guestroom text,basement text,
+    hotwaterheating text,airconditioning text,parking int,prefarea text,
+    furnishingstatus text)
+
+    \copy housing (price,area,bedrooms,
+    bathrooms,stories,mainroad,guestroom,basement,
+    hotwaterheating,airconditioning,parking,prefarea,
+    furnishingstatus) from 'Housing.csv' delimiter ',' csv header;

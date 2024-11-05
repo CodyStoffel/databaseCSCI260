@@ -1,21 +1,23 @@
 <html>
     <head>
         <title>A simple Webpage</title>
+        <link href="styles.css"  rel="stylesheet">
     </head>
-    <body>
-        <h1>Karl was here</h1>
-        <p>This is some normal text</p>
-        <table>
-            <tr><th>Id</th><th>Class</th><th>Number</th></tr>
-            <tr><td>1</td><td>CSCI</td><td>120</td></tr>
-        </table>
+    <script src="code.js"></script>
+    <body onload="showCourses('courseTable')">
+        <h1>Karl University Courses</h1>
+        <div id="courseTable"></div>
         <hr/>
         <p>Enter the new class information below</p>
-        <form action="index.html" method="get">
-            <label>Class:</label><input type='text' name="class"/><br/>
-            <label>Number:</label><input type='text' name="number"/><br/>
-            <input type="submit" value="Add Class"/><br/>
-            <input type="hidden" name="process" value="add"/>
+        <form>
+            <label>Class:</label><input id='class' type='text' name="class"/><br/>
+            <label>Number:</label><input id='number' type="text" name="number"/><br/>
+            <input type="button" value="Add Class" onclick="addCourse('class','number')"/><br/>
+        </form>
+        <form>
+            <label>Class:</label><input id='delclass' type='text'/><br/>
+            <label>Number:</label><input id='delnumber' type="text"/><br/>
+            <input type="button" value="Delete Class" onclick="deleteCourse('delclass','delnumber')"/><br/>
         </form>
     </body>
 </html>
