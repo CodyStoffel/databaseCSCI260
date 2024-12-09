@@ -1,0 +1,115 @@
+The final is 1.5 hrs earlier than normal
+When 8:00am on Thursday Dec 12
+
+All Content discussed during the semester is fair game
+Twice as much material as normal test.
+    It is averaged in your grade like a normal test
+40% Points to Multiple Choice
+60% Points for Reading and Writing Code (SQL)
+    50% reading examples
+        table + SQL
+        Python reading some data
+    50% writing examples
+        Given a set of tables and a request for a "report" write an
+            appropriate SQL statement
+
+Before we get to SQL
+    How can we use just a programming language like 
+        Python to process data.
+        CSVReader  Code might make an appearance
+    How can we use just a spreadsheet to process data
+        Plotting
+        --Lookup is not a replacement for JOIN
+        Spreadsheet might make an appearance
+Head towards SQL
+    Mathematical Foundation 
+        Relational Algebra
+            select
+            join   
+            where
+SQL Structured Query language +++++
+    While we have been doing POSTGRES.  MS-SQLServer, MySQL, Oracle
+    --- No-SQL
+    Biggest + for a database is the ability to JOIN relations
+    select
+        R (retrieve)
+        Common select statements you should understand.  Knowing all the possibilities is not
+            required.
+            select * from courses;
+            select * from course where instructor='Castleton';
+            select course,number from courses where instructor='Castleton';
+    insert
+        C (create)
+        insert into courses (course,number,instructor) value('CSCI',260,'Castleton');
+        Probably no where clause
+    delete
+        D (delete)
+        delete from courses where instructor='Castleton';
+        Probably should have a where
+            delete from courses;
+    update
+        U (update)
+        update courses set instructor='Castleton' where course='CSCI' and number=260;
+    
+    Meta data functions
+        create table Table_Name (colNam type,colNam2 type);
+            uint32  32 unsigned (no negatives) integer
+            int  
+            text
+            float
+            serial -> auto increments
+                We did this alot
+                    -> UUID long unique id instead
+        Alter table -> modify a table
+            add column
+            changing column type
+        drop table Table_name  <- don't do this unless somebody else is responsible
+    Performance Tuning
+        Add indexs for all keys and foreign keys
+            keys are a way to find a unique record in this table 
+            foreign keys a way to find unique records in other tables
+        Add indexs for any combination of fields used in where clauses.* (career+)
+    Joins++
+        + By default use left joins.
+        select x,y,z from Points where label='Red';
+        select x,y,z from XYs left join Zs on XYs.id=Zs.id where label='Red';
+        select firstName,lastName,course,number from schedule left join student 
+            on schedule.student_id=student.id where .....;
+ASCII CRUD interface to a database+  
+    1 Add Record
+    2 Delete Record.
+    ...
+    Code+
+TKInterface GUI (Graphical User Interface)+
+    Functions to handle events of the user clicking/....
+    CRUD Interface could build off the code of the ASCII interface
+    People feel more comfortable with a GUI
+    Code+
+Web Interface+
+    Minimum Python Server
+        Just like password (Don't do this)
+        DJango Python
+        Express JavaScript
+        TomCat Java
+    Data functions could be written once and used for all 3 User Interfaces+++
+    Comfortable with a Web
+    Easy to deploy to the world
+    Code+
+Data Analysis++
+    Averages and Standard Deviation is analysis
+    Plotting 
+        Scatter plots to see possible correlations in data
+        3D Scatter Plotting
+            K-Nearest Neighbor
+                $$$$$
+                Not AI
+Normalization+
+    First Normalization
+        Single values in each cell
+    Second Form Normalization
+        A unique key identifies a row
+        Employees table -> Id,First,Manager,Manager_Phone
+    Third Form Normalization
+        There are no small tables that should be added
+            Employess Table ->Id,First,Manager_id    Managers Table ->Id,First,Phone
+
